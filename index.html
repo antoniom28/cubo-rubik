@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root">
+        <div class="button">
+            <h1 class="main-button" @click="shuffle()">MISCHIA CUBO</h1>
+            <h1 class="do-cube" @click="doCube()">FAI IL CUBO</h1>
+        </div>
+
+        <div class="container">
+            <div id="arrows">
+                <div class="leftArrows">
+                    <i @click="rotHor(0,'left',false)" class="fas fa-arrow-left"></i>
+                    <i @click="rotHor(1,'left',false)" class="fas fa-arrow-left"></i>
+                    <i @click="rotHor(2,'left',false)" class="fas fa-arrow-left"></i>
+                </div>
+
+                <div class="arrowsUpDown">
+                    <i @click="rotVer(0,'up',false)" class="fas fa-arrow-up"></i>
+                    <i @click="rotVer(0,'down',false)" class="fas fa-arrow-down"></i>
+                </div>
+                <div class="arrowsUpDown">
+                    <i @click="rotVer(1,'up',false)" class="fas fa-arrow-up"></i>
+                    <i @click="rotVer(1,'down',false)" class="fas fa-arrow-down"></i>
+                </div>
+                <div class="arrowsUpDown">
+                    <i @click="rotVer(2,'up',false)" class="fas fa-arrow-up"></i>
+                    <i @click="rotVer(2,'down',false)" class="fas fa-arrow-down"></i>
+                </div>
+
+                <div class="rightArrows">
+                    <i @click="rotHor(0,'right',false)" class="fas fa-arrow-right"></i>
+                    <i @click="rotHor(1,'right',false)" class="fas fa-arrow-right"></i>
+                    <i @click="rotHor(2,'right',false)" class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+
+            <div v-if="changed" @mousedown="cubeMove()" @mouseup="cubeStopMove()" id="cube">
+                <div class="face front-face">
+                    <div v-for="(element,index) in cube.frontFace" class="miaface"
+                        v-bind:style="{backgroundColor:element}">
+                    </div>
+                </div>
+                <div class="face back-face">
+                    <div v-for="(element,index) in cube.backFace" class="miaface"
+                        v-bind:style="{backgroundColor:element}">
+                    </div>
+                </div>
+                <div class="face left-face">
+                    <div v-for="(element,index) in cube.leftFace" class="miaface"
+                        v-bind:style="{backgroundColor:element}">
+                    </div>
+                </div>
+                <div class="face right-face">
+                    <div v-for="(element,index) in cube.rightFace" class="miaface"
+                        v-bind:style="{backgroundColor:element}">
+                    </div>
+                </div>
+                <div class="face top-face">
+                    <div v-for="(element,index) in cube.facciaTop" class="miaface"
+                        v-bind:style="{backgroundColor:element}">
+                    </div>
+                </div>
+                <div class="face bottom-face">
+                    <div v-for="(element,index) in cube.facciaBottom" class="miaface"
+                        v-bind:style="{backgroundColor:element}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/8f1b5398cd.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
